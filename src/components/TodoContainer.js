@@ -23,6 +23,61 @@ class TodoContainer extends React.Component {
         ]
     };
 
+    /*handleChange = id => {
+        this.setState({
+            todos: this.state.todos.map(todo => {
+                if (todo.id === id) {
+                    todo.completed = !todo.completed;
+                }
+                return todo;
+            })
+        });
+    };*/
+    handleChange = id => {
+        /*this.setState(prevState => ({
+            todos: prevState.todos.map(todo => {
+              if (todo.id === id) {
+                todo.completed = !todo.completed
+              }
+              return todo
+            }),
+          }))*/
+        this.setState(prevState => ({
+            todos: prevState.todos.map(todo => {
+                if (todo.id === id) {
+                    return {
+                        ...todo,
+                        completed: !todo.completed,
+                    }
+                }
+                return todo
+            }),
+        }))
+        //avec return sans parenthese, mettre parenthese pour omettre le premier return
+        /*  
+        this.setState(prevState => {
+        return {
+            todos: prevState.todos.map(todo => {
+            if (todo.id === id) {
+                return {
+                ...todo,
+                completed: !todo.completed,
+                }
+            }
+            return todo
+            }),
+        }
+        })*/
+    };
+    delTodo = id => {
+        this.setState({
+            todos: [
+                ...this.state.todos.filter(todo => {
+                    return todo.id !== id;
+                })
+            ]
+        });
+    };
     render() {
         return (
             /*<ul>
@@ -31,8 +86,8 @@ class TodoContainer extends React.Component {
                 ))}
             </ul>*/
             <div>
-                <Header/>
-                <TodosList todos={this.state.todos} />
+                <Header />
+                <TodosList todos={this.state.todos} handleChangeProps={this.handleChange} deleteTodoProps={this.delTodo} />
             </div>
         );
 
