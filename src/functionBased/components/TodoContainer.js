@@ -5,8 +5,9 @@ import TodosList from "./TodosList"
 import { v4 as uuidv4 } from "uuid"
 
 const TodoContainer = () => {
-  const [todos, setTodos] = useState([])
-
+  //const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(getInitialTodos())
+  
   const handleChange = id => {
     setTodos(prevState =>
       prevState.map(todo => {
@@ -64,7 +65,11 @@ This way, if and only if any of the value(s) changes between re-renders, React w
   }, []);
 */
 
-useEffect(() => {
+/*In the code above, we are calling the setTodos setter function in the effect. 
+This is similar to calling the setState() in the componentDidMount method. 
+As we’ve mentioned earlier in the series, this triggers an extra rendering. 
+React already said it’s fine because it will happen before the browser updates the view.*/
+/*useEffect(() => {
     console.log("test run")
   
     // getting stored items
@@ -74,14 +79,21 @@ useEffect(() => {
     if (loadedTodos) {
       setTodos(loadedTodos)
     }
-  }, [])
+  }, [])*/
+
+  function getInitialTodos() {
+    // getting stored items
+    const temp = localStorage.getItem("todos")
+    const savedTodos = JSON.parse(temp)
+    return savedTodos || []
+  }
 
   useEffect(() => {
     // storing todos items
     const temp = JSON.stringify(todos)
     localStorage.setItem("todos", temp)
   }, [todos])
-  
+
   return (
     <div className="container">
       <div className="inner">
