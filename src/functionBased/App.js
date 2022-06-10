@@ -1,12 +1,12 @@
 import TodoContainer from './components/TodoContainer';
 import About from './components/About';
 import NotMatch from './components/NotMatch';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import Navbar from "./components/Navbar"
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Navbar />
       <div className="container">
         <div className="inner">
@@ -18,7 +18,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </BrowserRouter>
+    </Router>
   );
 }
 
