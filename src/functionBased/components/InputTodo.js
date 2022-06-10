@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import { FaPlusCircle } from "react-icons/fa"
 
 const InputTodo = props => {
-  //console.log(useState("hello"))
-  //JavaScript array destructuring.
+  /*console.log(useState("hello"))
+  JavaScript array destructuring.*/
   const [title, setTitle] = useState("")
 
   const onChange = e => {

@@ -65,7 +65,7 @@ Since in our case, we want to display the stored item(s) after component render,
                 return todo
             }),
         }))
-        //avec return sans parenthese, mettre parenthese pour omettre le premier return
+        /*avec return sans parenthese, mettre parenthese pour omettre le premier return*/
         /*  
         this.setState(prevState => {
         return {
